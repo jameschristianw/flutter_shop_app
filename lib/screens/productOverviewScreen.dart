@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/providers/cartProvider.dart';
 import 'package:shop_app/providers/productProvider.dart';
+import 'package:shop_app/screens/cartScreen.dart';
+import 'package:shop_app/widgets/badge.dart';
 import 'package:shop_app/widgets/productsGrid.dart';
 
 enum FilterOptions {
@@ -22,6 +25,18 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
       appBar: AppBar(
         title: const Text("My Shop"),
         actions: [
+          Consumer<CartProvider>(
+            builder: (context, cart, iconChild) => Badge(
+              child: iconChild,
+              value: cart.itemCount.toString(),
+            ),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.pushNamed(context, CartScreen.routeName);
+              },
+            ),
+          ),
           PopupMenuButton(
             onSelected: (FilterOptions selectedValue) {
               setState(() {
