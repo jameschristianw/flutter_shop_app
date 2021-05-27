@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/providers/cartProvider.dart';
 import 'package:shop_app/providers/productProvider.dart';
 import 'package:shop_app/screens/cartScreen.dart';
+import 'package:shop_app/widgets/appDrawer.dart';
 import 'package:shop_app/widgets/badge.dart';
 import 'package:shop_app/widgets/productsGrid.dart';
 
@@ -62,6 +63,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
         ],
       ),
       body: ProductsGrid(showFav: _showFavouritesOnly),
+      drawer: AppDrawer(),
     );
   }
 }
